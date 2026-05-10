@@ -57,16 +57,42 @@ class BioViT(nn.Module):
                                       nn.Linear(in_feats, num_classes))
     def forward(self, x): return self.head(self.vit(x))
 
+# class ImageEncoder(nn.Module):
+#     def __init__(self):
+#         super().__init__()
+#         biovit = BioViT(num_classes=NUM_CLASSES)
+#         ckpt   = torch.load(PRETRAIN / "BioViT.pth", map_location=DEVICE, weights_only=False)
+#         biovit.load_state_dict(ckpt)
+#         self.vit      = biovit.vit
+#         self.feat_dim = 768
+#         for p in self.vit.parameters(): p.requires_grad = False
+#     def forward(self, x): return self.vit(x)
 class ImageEncoder(nn.Module):
     def __init__(self):
         super().__init__()
+
         biovit = BioViT(num_classes=NUM_CLASSES)
-        ckpt   = torch.load(PRETRAIN / "BioViT.pth", map_location=DEVICE, weights_only=False)
-        biovit.load_state_dict(ckpt["model_state_dict"])
-        self.vit      = biovit.vit
+
+        ckpt = torch.load(
+            PRETRAIN / "BioViT.pth",
+            map_location=DEVICE,
+            weights_only=False
+        )
+
+        # Support both checkpoint formats
+        if isinstance(ckpt, dict) and "model_state_dict" in ckpt:
+            biovit.load_state_dict(ckpt["model_state_dict"])
+        else:
+            biovit.load_state_dict(ckpt)
+
+        self.vit = biovit.vit
         self.feat_dim = 768
-        for p in self.vit.parameters(): p.requires_grad = False
-    def forward(self, x): return self.vit(x)
+
+        for p in self.vit.parameters():
+            p.requires_grad = False
+
+    def forward(self, x):
+        return self.vit(x)
 
 class TextEncoder(nn.Module):
     def __init__(self):
