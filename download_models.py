@@ -6,10 +6,10 @@ def download_models():
     Path("report_gen").mkdir(exist_ok=True)
 
     models = {
-        "ScratchCnnModels/BioViT.pth"  : "1jxsCa3glD71dnoiXe8ZVuyrkl5q45RjS",
-        "report_gen/best_decoder.pth" : "1jdnimRLhm5u73S8J-NKA97FU-JwsUFOC",
-        "report_gen/vocab.json"       : "1KcQsIbFTmgUZZb1W_UFo79FjRRyzfLB3",
-    }
+    "ScratchCnnModels/BioViT.pth": "1jdnimRLhm5u73S8J-NKA97FU-JwsUFOC",
+    "report_gen/best_decoder.pth": "1jxsCa3glD71dnoiXe8ZVuyrkl5q45RjS",
+    "report_gen/vocab.json": "1KcQsIbFTmgUZZb1W_UFo79FjRRyzfLB3",
+}
 
     for path, file_id in models.items():
         if not os.path.exists(path):
