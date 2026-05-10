@@ -1,3 +1,4 @@
+*.png
 gpu_env/
 *.pth
 __pycache__/
