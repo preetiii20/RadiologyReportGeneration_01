@@ -7,16 +7,17 @@ def download_models():
 
     models = {
         "ScratchCnnModels/BioViT.pth"  : "1jxsCa3glD71dnoiXe8ZVuyrkl5q45RjS",
-        "report_gen/best_decoder.pth"   : "1jdnimRLhm5u73S8J-NKA97FU-JwsUFOC",
-        "report_gen/vocab.json"         : "1KcQsIbFTmgUZZb1W_UFo79FjRRyzfLB3",
+        "report_gen/best_decoder.pth" : "1jdnimRLhm5u73S8J-NKA97FU-JwsUFOC",
+        "report_gen/vocab.json"       : "1KcQsIbFTmgUZZb1W_UFo79FjRRyzfLB3",
     }
 
     for path, file_id in models.items():
         if not os.path.exists(path):
             print(f"Downloading {path}...")
             gdown.download(
-                f"https://drive.google.com/uc?id={file_id}",
-                path, quiet=False
+                f"https://drive.google.com/uc?export=download&id={file_id}",
+                path,
+                quiet=False
             )
             print(f"Done → {path}")
         else:
