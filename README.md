@@ -61,7 +61,7 @@ Chest X-Ray (224x224)        Clinical History (text)
 - **Labels:** 14 pathology classes (Atelectasis, Cardiomegaly, Consolidation, Edema, Enlarged Cardiomediastinum, Fracture, Lung Lesion, Lung Opacity, No Finding, Pleural Effusion, Pleural Other, Pneumonia, Pneumothorax, Support Devices)
 - **Usable samples after filtering:** 3,827
 - **Split:** 80% Train / 10% Val / 10% Test (seed=42)
-- **Source:** [https://openi.nlm.nih.gov/](https://www.kaggle.com/datasets/raddar/chest-xrays-indiana-university)
+- **Source:** [https://www.kaggle.com/datasets/raddar/chest-xrays-indiana-university]
 
 ---
 
